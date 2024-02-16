@@ -8,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,7 +20,7 @@ public class Booking {
     private int id;
 
     @Column(name="no_of_guests")
-    private int NoOfGuests;
+    private int noOfGuests;
     
     //@ManyToOne
     @JoinColumn(name="user_id")
@@ -39,7 +38,7 @@ public class Booking {
 
     public Booking(int id, int noOfGuests, int userId, int packageId, LocalDateTime bookingDate) {
         this.id = id;
-        NoOfGuests = noOfGuests;
+        this.noOfGuests = noOfGuests;
         this.userId = userId;
         this.packageId = packageId;
         this.bookingDate = bookingDate;
@@ -53,12 +52,12 @@ public class Booking {
         this.id = id;
     }
 
-    public int getNoOfGuests() {
-        return NoOfGuests;
+    public int getnoOfGuests() {
+        return noOfGuests;
     }
 
     public void setNoOfGuests(int noOfGuests) {
-        NoOfGuests = noOfGuests;
+        this.noOfGuests = noOfGuests;
     }
 
     public int getUserId() {
@@ -87,7 +86,7 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking [id=" + id + ", NoOfGuests=" + NoOfGuests + ", userId=" + userId + ", packageId=" + packageId
+        return "Booking [id=" + id + ", NoOfGuests=" + noOfGuests + ", userId=" + userId + ", packageId=" + packageId
                 + ", bookingDate=" + bookingDate + "]";
     }
 
