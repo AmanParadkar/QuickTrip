@@ -9,6 +9,7 @@ import com.love2code.springboot.quicktrip.entity.Packagee;
 
 public interface PackageRepository extends CrudRepository <Packagee,Integer>{
     
+    @SuppressWarnings("null")
     public List<Packagee> findAll();
  
    

@@ -6,8 +6,7 @@ import com.love2code.springboot.quicktrip.entity.Users;
 
 public interface UserRepository extends CrudRepository<Users, Integer> {
 
+    @SuppressWarnings("null")
     public List<Users> findAll();
-    //public Users findByPhoneNo(String phoneNo);
-    //public Users findByPassword(String pass);
 
 } 
