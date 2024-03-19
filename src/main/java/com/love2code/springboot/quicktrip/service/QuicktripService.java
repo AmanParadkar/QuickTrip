@@ -7,6 +7,7 @@ import com.love2code.springboot.quicktrip.entity.Packagee;
 import com.love2code.springboot.quicktrip.entity.Review;
 import com.love2code.springboot.quicktrip.entity.Users;
 
+
 public interface QuicktripService {
 
     // for user
@@ -39,5 +40,6 @@ public interface QuicktripService {
 	// for booking
 
 	public Booking createBooking(int userId,int packageId,Booking booking);
+
 	
 } 

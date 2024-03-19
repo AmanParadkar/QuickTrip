@@ -8,13 +8,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.love2code.springboot.quicktrip.dao.BookingRepository;
+
 import com.love2code.springboot.quicktrip.dao.PackageRepository;
 import com.love2code.springboot.quicktrip.dao.ReviewRepository;
 import com.love2code.springboot.quicktrip.dao.UserRepository;
 import com.love2code.springboot.quicktrip.entity.Booking;
+
 import com.love2code.springboot.quicktrip.entity.Packagee;
 import com.love2code.springboot.quicktrip.entity.Review;
 import com.love2code.springboot.quicktrip.entity.Users;
+
 
 @Service
 public class QuicktripServiceImpl implements QuicktripService{
@@ -23,35 +26,27 @@ public class QuicktripServiceImpl implements QuicktripService{
     private PackageRepository packageRepository;
     private ReviewRepository reviewRepository;
     private BookingRepository bookingRepository;
-    
+  
 
     @Autowired
     public QuicktripServiceImpl(UserRepository theuserRepository,
                                 PackageRepository thePackageRepository, 
                                 ReviewRepository theReviewRepository,
-                                BookingRepository theBookingRepository) {
+                                BookingRepository theBookingRepository
+                              ) {
         userRepository = theuserRepository;
         packageRepository = thePackageRepository;
         reviewRepository = theReviewRepository;
         bookingRepository = theBookingRepository;
+        
     }
 
     /////// for users
     @SuppressWarnings("null")
     @Override
     @Transactional
-    public void saveUser(Users theUser) {
-        
-        userRepository.save(theUser);
-
-        // userRepository.save(theUser);
-
-        // // Check if the user has a package associated with it
-        // Packagee packagee = theUser.getPackageId();
-        // if (packagee != null) {
-        //     // Save or update the associated package
-        //     packageRepository.save(packagee);
-        // }
+    public void saveUser(Users user) {
+            userRepository.save(user);
     }
 
     @Override

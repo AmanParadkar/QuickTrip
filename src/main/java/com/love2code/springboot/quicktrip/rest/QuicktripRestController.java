@@ -14,6 +14,7 @@ import com.love2code.springboot.quicktrip.entity.Booking;
 import com.love2code.springboot.quicktrip.entity.Packagee;
 import com.love2code.springboot.quicktrip.entity.Review;
 import com.love2code.springboot.quicktrip.entity.Users;
+
 import com.love2code.springboot.quicktrip.service.QuicktripService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,7 +52,7 @@ public class QuicktripRestController {
         return quicktripService.findUser();
     }
 
-    @PostMapping("/users")
+    @PostMapping("/users-register")
     public Users SaveUser(@RequestBody Users theUser) {
         
         theUser.setId(0);
@@ -59,7 +60,7 @@ public class QuicktripRestController {
         return theUser;
     }
 
-    @PutMapping("/users")
+    @PutMapping("/users-update")
 	public Users updateUser(@RequestBody Users theUser)
 	{
 		quicktripService.saveUser(theUser);
@@ -80,6 +81,21 @@ public class QuicktripRestController {
 		return "Delete user id - "+ userId;
 				
 	}
+
+    // register as admin
+    @PostMapping("/agent-register")
+    public Users postMethodName(@RequestBody Users users) {
+        users.setId(0);
+        quicktripService.saveUser(users);
+        return users; 
+        
+    }
+    
+
+
+
+
+
     
     /////////////////FOR PACKAGE//////////////////////////////////////////////////
 

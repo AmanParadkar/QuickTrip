@@ -25,51 +25,41 @@ public class Users {
     @Column(name="User_Name")
 	private String userName;
 	
-	@Column(name="role_")
-	private String role;
-	
 	@Column(name="phone_No")
 	private String phoneNo;
 
     @Column(name="email")
 	private String email;
 	
-	@Column(name="paasword")
+	@Column(name="password")
 	private String password;
 	
-	// @Column(name="city")
-	// private String city;
-
-	// @Column(name="state")
-	// private String state;
-
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="address_id")
-	private User_Address addressId;
+	private User_Address address;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Packagee> packagees;
 	
-	@JoinColumn(name="package_id")
-    @OneToOne(cascade=CascadeType.ALL)
-	private Packagee packageId;
-	// @Column(name="packageId")
-	// private int packageId;
-
-
     public Users()
 	{
 		
 	}
 
-	public Users(int id, String userName, String role, String phoneNo, String email, String password,
-			User_Address addressId, Packagee packageId) {
+	
+  // Getters and Setters
+
+	public Users(int id, String userName, String phoneNo, String email, String password,
+			User_Address address, List<Packagee> packagees) {
 		this.id = id;
 		this.userName = userName;
-		this.role = role;
 		this.phoneNo = phoneNo;
 		this.email = email;
 		this.password = password;
-		this.addressId = addressId;
-		this.packageId = packageId;
+		this.address = address;
+		this.packagees = packagees;
 	}
+
 
 	public int getId() {
 		return id;
@@ -85,14 +75,6 @@ public class Users {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
 	}
 
 	public String getPhoneNo() {
@@ -120,27 +102,40 @@ public class Users {
 	}
 
 	public User_Address getAddressId() {
-		return addressId;
+		return address;
 	}
 
 	public void setAddressId(User_Address addressId) {
-		this.addressId = addressId;
+		this.address = addressId;
+	}
+	
+
+	public User_Address getAddress() {
+		return address;
 	}
 
-	public Packagee getPackageId() {
-		return packageId;
+
+	public void setAddress(User_Address address) {
+		this.address = address;
 	}
 
-	public void setPackageId(Packagee packageId) {
-		this.packageId = packageId;
+
+	public List<Packagee> getPackagees() {
+		return packagees;
 	}
+
+
+	public void setPackagees(List<Packagee> packagees) {
+		this.packagees = packagees;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", userName=" + userName + ", role=" + role + ", phoneNo=" + phoneNo + ", email="
-				+ email + ", password=" + password + ", addressId=" + addressId + ", packageId=" + packageId + "]";
+		return "Users [id=" + id + ", userName=" + userName + ", role=" + ", phoneNo=" + phoneNo + ", email="
+				+ email + ", password=" + password + ", addressId=" + address + "]";
 	}
-
+  
 	
 
 }
